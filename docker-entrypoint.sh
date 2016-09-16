@@ -13,7 +13,7 @@ if [ "$1" = 'influxd' ]; then
   if [ ! -d "$DATADIR" ]; then
     echo 'Initializing'
 
-    "$@" &
+    INFLUXDB_HTTP_AUTH_ENABLED=false "$@" &
     pid="$!"
 
     for i in {30..0}; do
